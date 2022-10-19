@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Doggo - Add Pet</title>
+</head>
+<body>
+<div class="container">
+    <div class="menu-container">
+        <div class="nav-logo">
+            <h2><a th:href="@{/home}">DOGGO</a></h2>
+        </div>
+        <ul class="nav-container">
+            <li sec:authorize="isAnonymous()" class="nav-item"><a th:href="@{/login}">Login</a></li>
+            <li class="nav-item"><a th:href="@{/reservations}">Make a Reservation</a></li>
+            <li class="nav-item"><a th:href="@{/aboutus}">About Us</a></li>
+            <li sec:authorize="isAnonymous()" class="nav-itemblue"><a th:href="@{/signup}">Sign Up</a></li>
+            <li sec:authorize="isAuthenticated()" class="nav-item"><a th:href="@{/login}">Log out</a></li>
+        </ul>
+    </div>
+</div>
+<span th:text="${name}">Some Text</span>
+<form
+        method="post"
+        role="form"
+        th:action="@{/pet/save}"
+        th:object="${pet}">
+    <div class="form_container">
+        <header class="head-form">
+            <h2>Add Pet</h2>
+            <p>Please enter your pet details</p>
+        </header>
+        <br>
+        <div class="field-set">
+              <span>
+                    <label for="name">Name:</label>
+                    <input id="name" type="text" placeholder="John" th:field="*{name}" required>
+              </span>
+            <span>
+                    <label for="age">Age:</label>
+                    <input id="age" type="text" placeholder="Doe" th:field="*{age}" required>
+              </span>
+            <span>
+                 <label for="breed">Breed:</label>
+                  <input id="breed" type="text" placeholder="German Shepherd" th:field="*{breed}" required>
+              </span>
+            <span>
+                 <label for="email"></label>
+                  <input id="email" name="email" type="hidden" placeholder="johndoe@email.com" th:value="${#authentication.getName()}" required>
+              </span>
+            <button class="log-in" onclick="validateSignUp()"> Sign Up </button>
+        </div>
+    </div>
+</form>
+<footer>
+    <div class="container-5">
+        <div class="section-5">
+            <p id="banner-left"><strong>Join The Family</strong> <br> Sign up to join the DOGGO family!</p>
+            <div>
+                <a href="http://www.facebook.com" class="fa fa-facebook"></a>
+                <a href="http://www.twitter.com" class="fa fa-twitter"></a>
+                <a href="http://www.instagram.com" class="fa fa-instagram"></a>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

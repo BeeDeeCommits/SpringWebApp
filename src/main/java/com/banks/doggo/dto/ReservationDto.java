@@ -1,30 +1,26 @@
-package com.banks.doggo.model;
+package com.banks.doggo.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
-/** Represents a Reservation
- * @author Bankole Abawonse
- */
-
-@Entity
-@Table(name = "reservations")
-@NoArgsConstructor
 @Getter
 @Setter
-public class Reservation {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@NoArgsConstructor
+@AllArgsConstructor
+public class ReservationDto {
+    @NotEmpty
     private String startTime;
+    @NotEmpty
     private String endTime;
+    @NotEmpty
+    private String pet;
+    @NotEmpty
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
-
 }
