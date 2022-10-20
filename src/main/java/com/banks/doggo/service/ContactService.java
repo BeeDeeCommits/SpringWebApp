@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-/** Im
+/** Implements logic for Contact class
  * @author Bankole Abawonse
  */
 @Service
@@ -26,15 +26,6 @@ public class ContactService {
     @Autowired
     private MemberRepository memberRepository;
 
-    public Contact findContactById(Long id) throws Exception {
-        Optional<Contact> potentialContact = contactRepository.findById(id);
-        if (potentialContact.isPresent()) {
-            Contact contact = potentialContact.get();
-            return contact;
-        } else {
-            throw new ContactNotFoundException("Contact not found");
-        }
-    }
 
     /**
      * Associates a contact with a member
@@ -52,7 +43,4 @@ public class ContactService {
         //memberRepository.save(member);
     }
 
-    public void updateContact(String street, String city, String phoneNumber) {
-        contactRepository.updateContact(street, city, phoneNumber);
-    }
 }

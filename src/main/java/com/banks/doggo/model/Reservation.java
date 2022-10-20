@@ -1,5 +1,6 @@
 package com.banks.doggo.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,6 +16,7 @@ import java.util.Date;
 @Entity
 @Table(name = "reservations")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class Reservation {

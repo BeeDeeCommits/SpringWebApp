@@ -46,19 +46,21 @@ public class PetService {
         memberRepository.save(member);
     }
 
-    /**
-     * Finds a pet based off the breed
-     * @param breed breed information to be queried against the database
-     * @return returns pet by breed
-     */
-    public Pet findPetByBreed(String breed) {
-          return petRepository.findByBreed(breed);
-    }
 
+    /**
+     * Finds a pet by its name and the  member email associated with it
+     * @param name name of pet
+     * @param email email of member
+     * @return returns a pet object
+     */
     public Pet findByNameAndMember(String name, String email) {
         return petRepository.findByNameAndMember(name, email);
     }
 
+    /**
+     * Deletes pet entity
+     * @param pet pet entity to be deleted
+     */
     public void deletePet(Pet pet) {
         petRepository.delete(pet);
     }

@@ -52,6 +52,12 @@ public class ProfileController {
         return "profile";
     }
 
+    /**
+     * Handler metheod for handling pet delete request
+     * @param member models current user/member
+     * @param name name of pet
+     * @return returns the profile page
+     */
     @GetMapping("pet/delete")
     public String deletePet(@ModelAttribute("currentUser") Member member, @RequestParam("delete") String name) {
         Pet pet = petService.findByNameAndMember(name, SecurityContextHolder.getContext().getAuthentication().getName());

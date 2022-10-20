@@ -56,12 +56,6 @@ public class ReservationService {
         return member.getPets();
     }
 
-    public List<Reservation> allReservations() {
-        return reservationRepository.findAll();
-    }
-
-
-
 
 
 }
