@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form
+            method="post"
+            role="form"
+            th:action="@{/contact/save}"
+            th:object="${contact}">
+        <div class="form_container">
+            <header class="head-form">
+                <h2>Contact</h2>
+                <p>Please fill in your contact details</p>
+            </header>
+            <br>
+            <div class="field-set">
+                    <span>
+                          <label for="street">Street:</label>
+                          <input id="street" name="street" th:value="${contact.street}" th:field="${contact.street}" type="text">
+                    </span>
+                    <span>
+                          <label for="city" >City:</label>
+                          <input id="city" th:field="*{city}" type="text">
+                    </span>
+                    <span>
+                          <label for="telephone">Telephone</label>
+                          <input id="telephone" th:field="*{phoneNumber}" type="text">
+                    </span>
+                    <span>
+                          <button class="log-in" onclick="validateSignUp()"> Sign Up </button>
+                    </span>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

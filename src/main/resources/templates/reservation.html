@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Doggo - Reservation</title>
+</head>
+<body>
+  <form
+          method="post"
+          role="form"
+          th:action="@{/reservation/save}"
+          th:object="${reservation}">
+    <div class="form_container">
+      <header class="head-form">
+        <h2>Make a reservation</h2>
+        <p>Please fill out your reservation details</p>
+      </header>
+      <br>
+      <div class="field-set">
+                <span>
+                      <label for="reservationDate">Date:</label>
+                      <input id="reservationDate" name="reservationDate" th:value="${reservation.date}" th:field="${reservation.date}" type="date">
+                </span>
+                <span>
+                      <label for="startTime" >Time in:</label>
+                      <input id="startTime" th:field="*{startTime}" type="time">
+                </span>
+                <span>
+                      <label for="endTime">Time out:</label>
+                      <input id="endTime" th:field="*{endTime}" type="time">
+                </span>
+                <span>
+                      <label for="petName">Pet</label>
+                      <select id="petName" name="petName"  th:field="*{petName}">
+                          <option th:each="pet : ${petList}" th:value="${pet.name}"  th:text="${pet.name}"></option>
+                      </select>
+                </span>
+                <span>
+                      <label for="email"></label>
+                      <input id="email" name="email" type="hidden" placeholder="johndoe@email.com" th:value="${#authentication.getName()}" required>
+                </span>
+                <span>
+  <!--                 <label>location:</label>-->
+          <!--                  <input required>-->
+                      <button class="log-in" onclick="validateSignUp()"> Sign Up </button>
+                </span>
+      </div>
+    </div>
+  </form>
+</body>
+</html>

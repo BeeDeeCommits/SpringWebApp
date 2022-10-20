@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-/** implements logic for CRUD operations on Member class
+/** implements logic for Member class
  * @author Bankole Abawonse
  */
 @Service

@@ -8,7 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Set;
 
-/** Represents a Member/User of the application
+/** Represents Member/User entity of the application
  * @author Bankole Abawonse
  */
 @Entity
@@ -27,12 +27,16 @@ public class Member {
     private String lastName;
     @Column(nullable = false)
     private String password;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, name = "email")
     private String email;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "member_id")
     private Set<Pet> pets;
 
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Reservation> reservation;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Contact contact;
 }

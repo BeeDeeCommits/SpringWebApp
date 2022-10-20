@@ -12,8 +12,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
+/** Implements logic related to the Pet class
+ * @author Bankole Abawonse
+ */
 @Service
 @AllArgsConstructor
 public class PetService {
@@ -24,6 +28,10 @@ public class PetService {
     @Autowired
     private PetRepository petRepository;
 
+    /**
+     * Creates a new pet entity
+     * @param petDto retrieves pet model used to populate the Pet object
+     */
     public void addPet(PetDto petDto) {
         Authentication principal = SecurityContextHolder.getContext().getAuthentication();
         String memberEmail = principal.getName();
@@ -37,5 +45,16 @@ public class PetService {
         member.setPets(pets);
         memberRepository.save(member);
     }
+
+    /**
+     * Finds a pet based off the breed
+     * @param breed breed information to be queried against the database
+     * @return returns pet by breed
+     */
+    public Pet findPetByBreed(String breed) {
+          return petRepository.findByBreed(breed);
+    }
+
+
 
 }

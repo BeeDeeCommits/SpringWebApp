@@ -8,7 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.util.Date;
 
-/** Represents a Reservation
+/** Represents a Reservation entity
  * @author Bankole Abawonse
  */
 
@@ -26,5 +26,6 @@ public class Reservation {
     private String endTime;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
+    private String petName;
 
 }

@@ -16,6 +16,6 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
      * @return returns a reservation for a member.
      */
     @Query(value = "FROM Member m JOIN Reservation r WHERE m.email =? 1")
-    Reservation findReservationByMember(String email);
+    Reservation findReservation(String email);
 
 }

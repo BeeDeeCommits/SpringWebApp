@@ -6,7 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-/** Represents a pet belonging to a Member.
+/** Represents pet entity.
  * @author Bankole Abawonse
  */
 

@@ -9,6 +9,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
+/**
+ * Represents model from form used to create a Reservation object.
+ * @author Bankole Abawonse
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,7 +23,7 @@ public class ReservationDto {
     @NotEmpty
     private String endTime;
     @NotEmpty
-    private String pet;
+    private String petName;
     @NotEmpty
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
