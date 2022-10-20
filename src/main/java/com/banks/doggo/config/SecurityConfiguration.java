@@ -34,13 +34,18 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/signup/**").permitAll()
+                .antMatchers("/signup/**", "/*.css", "/*.js", "/index", "/aboutus").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/index")
-                .permitAll();
+                .defaultSuccessUrl("/profile")
+                .failureUrl("/login")
+                .permitAll()
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/index");;
         return http.build();
     }
 

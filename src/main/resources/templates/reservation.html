@@ -3,8 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Doggo - Reservation</title>
+    <link type="text/css" th:href="@{/styles.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+    <div class="container">
+        <div class="menu-container">
+            <div class="nav-logo">
+                <h2><a th:href="@{/index}">DOGGO</a></h2>
+            </div>
+            <ul class="nav-container">
+                <li sec:authorize="isAnonymous()" class="nav-item"><a th:href="@{/login}" >Login</a></li>
+                <li class="nav-item"><a th:href="@{/pet}">Add Pet</a></li>
+                <li class="nav-item"><a th:href="@{/profile}">Profile</a></li>
+                <li class="nav-item"><a th:href="@{/reservation}">Make a Reservation</a></li>
+                <li class="nav-item"><a th:href="@{/aboutus}">About Us</a></li>
+                <li class="nav-item"><a th:href="@{/contact}">Add Contact</a></li>
+                <li sec:authorize="isAuthenticated()" class="nav-item"><a th:href="@{/login}">Log out</a></li>
+                <li sec:authorize="isAnonymous()" class="nav-itemblue"><a th:href="@{/signup}">Sign Up</a></li>
+            </ul>
+        </div>
+    </div>
   <form
           method="post"
           role="form"
@@ -19,7 +38,7 @@
       <div class="field-set">
                 <span>
                       <label for="reservationDate">Date:</label>
-                      <input id="reservationDate" name="reservationDate" th:value="${reservation.date}" th:field="${reservation.date}" type="date">
+                      <input id="reservationDate" name="reservationDate" th:value="${#dates.format(reservation.date, 'dd/MM/yyyy')}" th:field="${reservation.date}" type="date">
                 </span>
                 <span>
                       <label for="startTime" >Time in:</label>
@@ -42,7 +61,7 @@
                 <span>
   <!--                 <label>location:</label>-->
           <!--                  <input required>-->
-                      <button class="log-in" onclick="validateSignUp()"> Sign Up </button>
+                      <button class="log-in" onclick="validateSignUp()">Reserve Spot</button>
                 </span>
       </div>
     </div>

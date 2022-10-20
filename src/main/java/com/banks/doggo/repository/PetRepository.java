@@ -13,4 +13,8 @@ public interface PetRepository extends JpaRepository<Pet, Long> {
     @Query(value = "FROM Pet p where p.breed =?1")
     Pet findByBreed(String breed);
 
+    @Query(value = "FROM Pet p join Member m where p.name =?1 and m.email=?2")
+    Pet findByNameAndMember(String name, String email);
+
+
 }

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Doggo</title>
+    <link type="text/css" th:href="@{/styles.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="menu-container">
+            <div class="nav-logo">
+                <h2><a th:href="@{/index}">DOGGO</a></h2>
+            </div>
+            <ul class="nav-container">
+                <li  class="nav-item"><a th:href="@{/login}">Login</a></li>
+                <li class="nav-item"><a th:href="@{/reservation}">Make a Reservation</a></li>
+                <li class="nav-item"><a th:href="@{/aboutus}">About Us</a></li>
+                <li sec:authorize="isAnonymous()" class="nav-itemblue"><a th:href="@{/signup}">Sign Up</a></li>
+                <li sec:authorize="isAuthenticated()" class="nav-item"><a th:href="@{/logout}">Log out</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="aboutUsContainer">
+        <div>
+            <h1>About Us</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut diam quam nulla porttitor massa id. Nunc non blandit massa enim nec dui nunc mattis.
+                Sollicitudin tempor id eu nisl nunc mi ipsum faucibus. Id diam maecenas ultricies mi.
+                Dolor purus non enim praesent elementum facilisis leo.</p>
+        </div>
+    </div>
+    <table>
+        <caption>Business Hours</caption>
+        <thead>
+        <tr>
+            <th scope="col">Day</th>
+            <th scope="col">Opening Hours</th>
+            <th scope="col">Closing Hours</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <td colspan="3">Call to confirm holiday hours.</td>
+        </tr>
+        </tfoot>
+        <tbody>
+        <tr>
+            <th scope="row">Monday</th>
+            <td>8AM</td>
+            <td>8PM</td>
+        </tr>
+        <tr>
+            <th scope="row">Tuesday</th>
+            <td>8AM</td>
+            <td>8PM</td>
+        </tr>
+        <tr>
+            <th scope="row">Wednesday</th>
+            <td>8AM</td>
+            <td>8PM</td>
+        </tr>
+        <tr>
+            <th scope="row">Thursday</th>
+            <td>8AM</td>
+            <td>8PM</td>
+        </tr>
+        <tr>
+            <th scope="row">Friday</th>
+            <td>8AM</td>
+            <td>8PM</td>
+        </tr>
+        <tr>
+            <th scope="row">Saturday</th>
+            <td>10AM</td>
+            <td>8PM</td>
+        </tr>
+        <tr>
+            <th scope="row">Sunday</th>
+            <td style="color: red;">CLOSED</td>
+            <td style="color: red;">CLOSED</td>
+        </tr>
+        </tbody>
+    </table>
+    <footer>
+        <div class="container-5">
+            <div class="section-5">
+                <p id="banner-left"><strong>Join The Family</strong> <br> Sign up to join the DOGGO family!</p>
+                <div>
+                    <a href="http://www.facebook.com" class="fa fa-facebook"></a>
+                    <a href="http://www.twitter.com" class="fa fa-twitter"></a>
+                    <a href="http://www.instagram.com" class="fa fa-instagram"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

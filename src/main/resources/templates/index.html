@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Doggo - Woofing since 2022</title>
+    <link type="text/css" th:href="@{/styles.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div class="container">
@@ -12,8 +14,9 @@
             </div>
             <ul class="nav-container">
                 <li sec:authorize="isAnonymous()" class="nav-item"><a th:href="@{/login}">Login</a></li>
+                <li sec:authorize="isAuthenticated()" class="nav-item"><a th:href="@{/profile}">Profile</a></li>
                 <li class="nav-item"><a th:href="@{/reservation}">Make a Reservation</a></li>
-                <li class="nav-item"><a th:href="@{/about_us}">About Us</a></li>
+                <li class="nav-item"><a th:href="@{/aboutus}">About Us</a></li>
                 <li sec:authorize="isAnonymous()" class="nav-itemblue"><a th:href="@{/signup}">Sign Up</a></li>
                 <li sec:authorize="isAuthenticated()" class="nav-item"><a th:href="@{/login}">Log out</a></li>
             </ul>

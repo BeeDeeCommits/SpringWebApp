@@ -55,6 +55,14 @@ public class PetService {
           return petRepository.findByBreed(breed);
     }
 
+    public Pet findByNameAndMember(String name, String email) {
+        return petRepository.findByNameAndMember(name, email);
+    }
+
+    public void deletePet(Pet pet) {
+        petRepository.delete(pet);
+    }
+
 
 
 }

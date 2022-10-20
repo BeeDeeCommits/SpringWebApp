@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Doggo Profile</title>
+    <link type="text/css" th:href="@{/styles.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" th:src="@{/main.js}"></script>
 </head>
 <body>
     <div class="container">
         <div class="menu-container">
             <div class="nav-logo">
-                <h2><a th:href="@{/home}">DOGGO</a></h2>
+                <h2><a th:href="@{/index}">DOGGO</a></h2>
             </div>
             <ul class="nav-container">
                 <li sec:authorize="isAnonymous()" class="nav-item"><a th:href="@{/login}" >Login</a></li>
                 <li class="nav-item"><a th:href="@{/pet}">Add Pet</a></li>
+                <li class="nav-item"><a th:href="@{/profile}">Profile</a></li>
                 <li class="nav-item"><a th:href="@{/reservation}">Make a Reservation</a></li>
-                <li class="nav-item"><a th:href="@{/aboutus}">About Us</a></li>
                 <li class="nav-item"><a th:href="@{/contact}">Add Contact</a></li>
                 <li sec:authorize="isAuthenticated()" class="nav-item"><a th:href="@{/login}">Log out</a></li>
                 <li sec:authorize="isAnonymous()" class="nav-itemblue"><a th:href="@{/signup}">Sign Up</a></li>
@@ -22,8 +25,8 @@
         </div>
     </div>
     <br>
-    <h1 style="text-align: center">Welcome <span th:text="${currentUser.firstName}"></span></h1>
     <br>
+    <h1 style="text-align: center">Welcome <span th:text="${currentUser.firstName}"></span></h1>
     <div class="table-container">
         <table>
             <caption>Your Pets</caption>
@@ -40,7 +43,6 @@
                 <td th:text="${pet.age}"></td>
                 <td th:text="${pet.breed}"></td>
             </tr>
-
             </tbody>
         </table>
         <br>
@@ -55,14 +57,24 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="reservation : ${allReservations}">
+            <tr th:each="reservation : ${currentUser.getReservation()}">
                 <td th:text="${#dates.format(reservation.date, 'MM/dd/yyyy')}"></td>
-                <td th:text="*{reservation.pet}"></td>
+                <td th:text="*{reservation.petName}"></td>
                 <td th:text="${reservation.startTime}"></td>
                 <td th:text="${reservation.endTime}"></td>
             </tr>
             </tbody>
         </table>
+    </div>
+    <div class="container-5" >
+        <div class="section-5">
+            <p id="banner-left"><strong>Join The Family</strong> <br> Sign up to join the DOGGO family!</p>
+            <div>
+                <a href="http://www.facebook.com" class="fa fa-facebook"></a>
+                <a href="http://www.twitter.com" class="fa fa-twitter"></a>
+                <a href="http://www.instagram.com" class="fa fa-instagram"></a>
+            </div>
+        </div>
     </div>
 </body>
 </html>

@@ -47,7 +47,7 @@ public class PetController {
 
             if (result.hasErrors()) {
                 model.addAttribute("pet", petDto);
-                return "sign_up";
+                return "pet";
             }
 
             petService.addPet(petDto);

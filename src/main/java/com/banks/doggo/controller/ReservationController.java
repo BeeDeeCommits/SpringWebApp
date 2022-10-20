@@ -1,6 +1,7 @@
 package com.banks.doggo.controller;
 
 import com.banks.doggo.dto.ReservationDto;
+import com.banks.doggo.model.Reservation;
 import com.banks.doggo.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 import java.util.Date;
+import java.util.List;
 
 
 /** Controller for the reservation model
@@ -46,6 +48,7 @@ public class ReservationController {
     public void petList(Model model) {
         model.addAttribute("petList", reservationService.reservationOptions(SecurityContextHolder.getContext().getAuthentication().getName()));
     }
+
 
     /**
      *

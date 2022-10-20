@@ -12,10 +12,10 @@ import org.springframework.stereotype.Repository;
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
 
     /** Abstract method for finding reservations by member Email.
-     * @param email the email of the member.
+     * @param petName the email of the member.
      * @return returns a reservation for a member.
      */
-    @Query(value = "FROM Member m JOIN Reservation r WHERE m.email =? 1")
-    Reservation findReservation(String email);
+    @Query(value = "FROM Reservation r WHERE r.petName =? 1")
+    Reservation findReservation(String petName);
 
 }
