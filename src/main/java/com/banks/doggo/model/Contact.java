@@ -23,6 +23,8 @@ public class Contact {
     private String street;
     private String city;
     private String phoneNumber;
+    @OneToOne
+    private Member member;
 
 
 }

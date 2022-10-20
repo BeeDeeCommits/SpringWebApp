@@ -60,6 +60,7 @@ public class ReservationController {
 
         if (result.hasErrors()) {
             model.addAttribute("reservation", reservationDto);
+            return "reservation";
         }
 
         reservationService.addReservation(reservationDto, email);

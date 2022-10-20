@@ -37,6 +37,13 @@ public class Member {
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Reservation> reservation;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private Contact contact;
+
+    public Member(String firstName, String lastName, String email, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+    }
 }

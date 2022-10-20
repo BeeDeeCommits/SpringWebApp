@@ -6,7 +6,12 @@ import com.banks.doggo.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 /** Controller for the contact class
  * @author Bankole Abawonse
@@ -26,6 +31,17 @@ public class ContactController {
     public String contact(Model model) {
         ContactDto contactDto = new ContactDto();
         model.addAttribute("contact", contactDto);
+        return "contact";
+    }
+
+    @PostMapping("/contact/save")
+    public String addContact(@Valid @ModelAttribute("contact") ContactDto contactDto, BindingResult result, Model model) {
+
+        if (result.hasErrors()) {
+            model.addAttribute("contact", contactDto);
+            return "contact";
+        }
+        contactService.addContact(contactDto);
         return "contact";
     }
 }
