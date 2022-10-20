@@ -34,6 +34,13 @@ public class ContactController {
         return "contact";
     }
 
+    /**
+     * Handle method for handling contact form submit request.
+     * @param contactDto retrieves model fields from form.
+     * @param result holds the result of the validation/binding and contains errors that may have occurred.
+     * @param model creates a model of the ContactDto object.
+     * @return returns the contact form.
+     */
     @PostMapping("/contact/save")
     public String addContact(@Valid @ModelAttribute("contact") ContactDto contactDto, BindingResult result, Model model) {
 

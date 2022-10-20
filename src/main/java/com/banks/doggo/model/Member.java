@@ -37,7 +37,7 @@ public class Member {
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Reservation> reservation;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.MERGE)
     private Contact contact;
 
     public Member(String firstName, String lastName, String email, String password) {

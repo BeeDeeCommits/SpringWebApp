@@ -1,10 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Doggo Profile</title>
 </head>
 <body>
-$END$
+    <div class="container">
+        <div class="menu-container">
+            <div class="nav-logo">
+                <h2><a th:href="@{/home}">DOGGO</a></h2>
+            </div>
+            <ul class="nav-container">
+                <li sec:authorize="isAnonymous()" class="nav-item"><a th:href="@{/login}" >Login</a></li>
+                <li class="nav-item"><a th:href="@{/pet}">Add Pet</a></li>
+                <li class="nav-item"><a th:href="@{/reservation}">Make a Reservation</a></li>
+                <li class="nav-item"><a th:href="@{/aboutus}">About Us</a></li>
+                <li class="nav-item"><a th:href="@{/contact}">Add Contact</a></li>
+                <li sec:authorize="isAuthenticated()" class="nav-item"><a th:href="@{/login}">Log out</a></li>
+                <li sec:authorize="isAnonymous()" class="nav-itemblue"><a th:href="@{/signup}">Sign Up</a></li>
+            </ul>
+        </div>
+    </div>
+    <br>
+    <h1 style="text-align: center">Welcome <span th:text="${currentUser.firstName}"></span></h1>
+    <br>
+    <div class="table-container">
+        <table>
+            <caption>Your Pets</caption>
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Breed</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="pet : ${currentUser.getPets()}">
+                <td th:text="${pet.name}"></td>
+                <td th:text="${pet.age}"></td>
+                <td th:text="${pet.breed}"></td>
+            </tr>
+
+            </tbody>
+        </table>
+        <br>
+        <table>
+            <caption>Your Reservations</caption>
+            <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Pet</th>
+                <th scope="col">Time In</th>
+                <th scope="col">Time Out</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="reservation : ${allReservations}">
+                <td th:text="${#dates.format(reservation.date, 'MM/dd/yyyy')}"></td>
+                <td th:text="*{reservation.pet}"></td>
+                <td th:text="${reservation.startTime}"></td>
+                <td th:text="${reservation.endTime}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

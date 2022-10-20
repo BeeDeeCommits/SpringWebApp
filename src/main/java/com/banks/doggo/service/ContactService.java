@@ -51,4 +51,8 @@ public class ContactService {
         contactRepository.save(contact);
         //memberRepository.save(member);
     }
+
+    public void updateContact(String street, String city, String phoneNumber) {
+        contactRepository.updateContact(street, city, phoneNumber);
+    }
 }

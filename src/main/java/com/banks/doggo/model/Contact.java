@@ -23,7 +23,7 @@ public class Contact {
     private String street;
     private String city;
     private String phoneNumber;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.MERGE)
     private Member member;
 
 
